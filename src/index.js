@@ -1,6 +1,4 @@
-import express from "express";
-
-const app = express();
+import { app } from "./app.js"
 
 app.get("/", (req, res) => {
     res.send("<h1>Project Setup</h1>")
