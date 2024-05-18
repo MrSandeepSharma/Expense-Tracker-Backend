@@ -1,0 +1,52 @@
+# Project Planning
+
+## Project Name
+Expense Tracker
+
+## Project Description
+A simple and efficient expense tracking application that allows users to 
+track their spending, categorize expenses, and get an overview of their 
+financial habits. The application includes basic features for all users 
+and advanced features for premium subscribers.
+
+## Probable Models
+1. User
+   - Fields: username, email, password
+2. Expense
+   - Fields: userId, amount, category, date, description
+
+## Probable Routes
+
+### Authentication Routes
+1. POST /api/auth/register
+   - Description: Register a new user.
+   - Request Body: { username, email, password }
+   - Response: User registered message with token or error message.
+
+2. POST /api/auth/login
+   - Description: Authenticate a user and return a JWT token.
+   - Request Body: { email, password }
+   - Response: { token } or error message.
+
+### Expense Routes
+1. POST /api/expenses
+   - Description: Create a new expense.
+   - Request Body: { amount, category, date }
+   - Headers: { x-auth-token: JWT }
+   - Response: Created expense object or error message.
+
+2. GET /api/expenses
+   - Description: Get all expenses for the authenticated user.
+   - Headers: { x-auth-token: JWT }
+   - Response: Array of expense objects or error message.
+
+3. PUT /api/expenses/:id
+   - Description: Update an expense by ID.
+   - Request Body: { amount, category, date, description }
+   - Headers: { x-auth-token: JWT }
+   - Response: Updated expense object or error message.
+
+4. DELETE /api/expenses/:id
+   - Description: Delete an expense by ID.
+   - Headers: { x-auth-token: JWT }
+   - Response: Success message or error message.
