@@ -6,8 +6,7 @@ Expense Tracker
 ## Project Description
 A simple and efficient expense tracking application that allows users to 
 track their spending, categorize expenses, and get an overview of their 
-financial habits. The application includes basic features for all users 
-and advanced features for premium subscribers.
+financial habits.
 
 ## Probable Models
 1. User
