@@ -17,10 +17,6 @@ const expenseSchema = new Schema(
             required: [true, "Category is required"],
             enum: ["Food", "Transport", "Utilities", "Health", "Entertainment", "Other"],
             default: "Other"
-        },
-        description: {
-            type: String,
-            maxlength: [200, "Description cannot exceed 200 characters"]
         }
     },
     { timestamps: true }

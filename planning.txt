@@ -12,7 +12,7 @@ financial habits.
 1. User
    - Fields: username, email, password
 2. Expense
-   - Fields: userId, amount, category, date, description
+   - Fields: userId, amount, category, date
 
 ## Probable Routes
 
@@ -39,13 +39,7 @@ financial habits.
    - Headers: { x-auth-token: JWT }
    - Response: Array of expense objects or error message.
 
-3. PUT /api/expenses/:id
-   - Description: Update an expense by ID.
-   - Request Body: { amount, category, date, description }
-   - Headers: { x-auth-token: JWT }
-   - Response: Updated expense object or error message.
-
-4. DELETE /api/expenses/:id
+3. DELETE /api/expenses
    - Description: Delete an expense by ID.
    - Headers: { x-auth-token: JWT }
    - Response: Success message or error message.
