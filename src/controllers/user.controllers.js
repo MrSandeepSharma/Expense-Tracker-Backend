@@ -1,5 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 import { User } from "../models/user.model.js"
+import { generateToken } from "../middlewares/jwt.middlewares.js";
 
 const registerUser = asyncHandler( async (req, res) => {
     try {
@@ -14,8 +15,15 @@ const registerUser = asyncHandler( async (req, res) => {
         const newUser = new User({ username, email, password });
         const response = await newUser.save();
 
+        const payload = {
+            id: response.id,
+            username: response.username
+        }
+
+        const token = generateToken(payload);
+
         const { password: _, ...userWithoutPassword } = response.toObject();
-        res.status(201).json(userWithoutPassword);
+        res.status(200).json({response: response, token: token});
 
     } catch (error) {
         console.log(error);
@@ -33,8 +41,14 @@ const loginUser = asyncHandler( async (req, res) => {
             return res.status(401).json({error: 'Invalid username or password'});
         }
 
+        const payload = {
+            id: user.id,
+            username: user.username
+        }
+        const token = generateToken(payload);
+
         const { password: _, ...userWithoutPassword } = user.toObject();
-        res.status(201).json(userWithoutPassword);
+        res.status(200).json({response: userWithoutPassword, token: token});
     } catch (error) {
         console.log(error)
         res.status(500).json({error: 'Internal Server Error'});
