@@ -1,1 +1,1 @@
-export const DB__NAME = "Expense Tracker";
+export const DB_NAME = "Expense Tracker";

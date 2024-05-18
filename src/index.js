@@ -1,5 +1,12 @@
+import dotenv from "dotenv";
 import { app } from "./app.js"
 import connectDB from "./db/index.js"
+
+dotenv.config({
+    path: "/"
+})
+
+const port = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
     res.send("<h1>Project Setup</h1>")
@@ -7,8 +14,8 @@ app.get("/", (req, res) => {
 
 connectDB()
     .then(()=> {
-        app.listen(4000, () => {
-            console.log("Server is running on Port 4000!")
+        app.listen(port, () => {
+            console.log("Server is running on Port", port)
         })
     })
     .catch((error) => {
