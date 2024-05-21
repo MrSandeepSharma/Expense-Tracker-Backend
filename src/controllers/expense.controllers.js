@@ -3,10 +3,11 @@ import { Expense } from "../models/expense.model.js";
 
 const addExpense = asyncHandler( async(req, res) => {
     try {
-        const { amount, category } = req.body;
+        const { name, amount, category } = req.body;
 
         const newExpense = new Expense({
             userId: req.user.id,
+            name,
             amount,
             category
         });
