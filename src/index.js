@@ -8,10 +8,6 @@ dotenv.config({
 
 const port = process.env.PORT || 4000;
 
-app.get("/", (req, res) => {
-    res.send("<h1>Project Setup</h1>")
-})
-
 connectDB()
     .then(()=> {
         app.listen(port, () => {

@@ -7,6 +7,10 @@ const expenseSchema = new Schema(
             ref: 'User',
             required: true
         },
+        name: {
+            type: String,
+            required: [true, "Name is required"],
+        },
         amount: {
             type: Number,
             required: [true, "Amount is required"],
@@ -15,8 +19,7 @@ const expenseSchema = new Schema(
         category: {
             type: String,
             required: [true, "Category is required"],
-            enum: ["Food", "Transport", "Utilities", "Health", "Entertainment", "Other"],
-            default: "Other"
+            enum: ["Investment", "Expense", "Savings"]
         }
     },
     { timestamps: true }

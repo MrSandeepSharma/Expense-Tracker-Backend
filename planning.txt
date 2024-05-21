@@ -12,7 +12,7 @@ financial habits.
 1. User
    - Fields: username, email, password
 2. Expense
-   - Fields: userId, amount, category, date
+   - Fields: userId, name, amount, category, date
 
 ## Probable Routes
 
@@ -27,10 +27,20 @@ financial habits.
    - Request Body: { email, password }
    - Response: { token } or error message.
 
+3. GET /api/auth/current-user
+   - Description: Get current authenticated user details.
+   - Headers: { x-auth-token: JWT }
+   - Response: User object or error message.
+
+4. POST /api/auth/logout
+   - Description: Logout the current user.
+   - Headers: { x-auth-token: JWT }
+   - Response: Success message or error message.
+
 ### Expense Routes
 1. POST /api/expenses
    - Description: Create a new expense.
-   - Request Body: { amount, category, date }
+   - Request Body: { name, amount, category, date }
    - Headers: { x-auth-token: JWT }
    - Response: Created expense object or error message.
 
